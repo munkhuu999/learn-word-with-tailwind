@@ -9,24 +9,21 @@ import User from "../User";
 import Register from "../register";
 
 const App = () => {
-  const [openside, setpenide] = useState(true); // hajuu taliig neeh
+  const [openside, setopenide] = useState(true); // hajuu taliig neeh
 
   return (
     <div>
       {/* -------------------------------Хажуу талынн цэс------------------------------------- */}
       <div className=" flex flex-row">
         <aside className={`${openside ? "w-72" : "w-20"} duration-300`}>
-          <SideMenu open={() => setpenide(!openside)} />
+          <SideMenu open={() => setopenide(!openside)} />
         </aside>
         {/* ---------------------------content----------------------------------- */}
-        <main className=" bg-red-500 p-7 text-2xl font-semibold flex-1">
-          Content
+        <main className=" h-full bg-blue-200 p-7 text-2xl font-semibold flex-1">
           <Routes>
-            <Route path="/" element={<Register />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/user" element={<User />} />
           </Routes>
-          {/* <User />
-          <Register /> */}
         </main>
       </div>
     </div>

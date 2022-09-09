@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Menu from "../menu";
 import leftLogo from "../../assets/img/left.png";
 import logo from "../../assets/img/logo.png";
 import user from "../../assets/img/user.png";
@@ -14,29 +15,21 @@ import sex from "../../assets/img/6.png";
 
 const SideBar = (props) => {
   const [OpenSide, setOpenSide] = useState(true);
-  const Menus = [
-    { title: "HSK ханз цээжлэх", src: `${one}`, path: "/HSK1" },
-    { title: "HSK ханз цээжлэх", src: `${two}`, path: "/HSK2" },
-    { title: "HSK ханз цээжлэх", src: `${three}`, path: "/HSK3" },
-    { title: "HSK ханз цээжлэх", src: `${four}`, path: "/HSK4" },
-    { title: "HSK ханз цээжлэх", src: `${five}`, path: "/HSK5" },
-    { title: "HSK ханз цээжлэх", src: `${sex}`, path: "/HSK6" },
-    { title: "Нэвтрэх", src: `${user}`, gap: true, path: "/user" },
-    { title: "Бүртгүүлэх", src: `${register}`, path: "/register" },
-  ];
+
   const hajuunee = () => {
     setOpenSide(!OpenSide);
     props.open();
+    console.log(OpenSide);
   };
 
   return (
     <div
       className={` ${
         OpenSide ? "w-72" : "w-20"
-      } duration-300 w-72 h-screen bg-dark-purple fixed p-5 pt-8`}
+      } duration-300 h-full bg-gray-500 fixed  p-5 pt-8`}
     >
       <img
-        className={`absolute top-9 -right-7 w-16 cursor-pointer border border-dark-purple rounded-full ${
+        className={`absolute top-9 -right-7 w-12 cursor-pointer border border-dark-purple rounded-full ${
           !OpenSide && "rotate-180"
         }`}
         src={leftLogo}
@@ -44,7 +37,7 @@ const SideBar = (props) => {
         onClick={hajuunee}
       />
       {/* ----------------menuuu------------------------- */}
-      <Link to={"###"} className=" flex justify-center items-center mb-10">
+      <Link to={"filee"} className=" flex justify-center items-center mb-10">
         <img
           src={logo}
           alt=""
@@ -52,39 +45,23 @@ const SideBar = (props) => {
             OpenSide && "rotate-[360deg]"
           }`}
         />
-        {/* <h1
-          className={`text-white origin-left font-medium text-xl duration-300 ${
-            !OpenSide && "scale-0"
-          }`}
-        >
-          HSK ханз цээжлэх
-        </h1> */}
+        {/* ----------------menuuu------------------------- */}
       </Link>
       <ul className=" pt-6">
-        {Menus.map((menu, index) => (
-          <li
-            className={` cursor-pointer p-2 hover:bg-light-white rounded-md ${
-              menu.gap ? "mt-9" : "mt-2"
-            }`}
-            key={index}
-          >
-            <Link
-              to={"##"}
-              className=" flex items-center gap-x-4 text-white text-sm "
-            >
-              <img
-                className={`h-20 w-20 ${!OpenSide && " h-7 w-9"} rounded-full`}
-                src={menu.src}
-                alt=""
-              />
-              <span
-                className={`${!OpenSide && "hidden"} origin-left duration-200`}
-              >
-                {menu.title}
-              </span>
-            </Link>
-          </li>
-        ))}
+        <Menu Zurag={one} Link="Ханз1" text="HSK Ханз" OpenSide={OpenSide} />
+        <Menu Zurag={two} Link="Ханз2" text="HSK Ханз" OpenSide={OpenSide} />
+        <Menu Zurag={three} Link="Ханз3" text="HSK Ханз" OpenSide={OpenSide} />
+        <Menu Zurag={four} Link="Ханз4" text="HSK Ханз" OpenSide={OpenSide} />
+        <Menu Zurag={five} Link="Ханз5" text="HSK Ханз" OpenSide={OpenSide} />
+        <Menu Zurag={sex} Link="Ханз6" text="HSK Ханз" OpenSide={OpenSide} />
+        <br />
+        <Menu Zurag={user} Link="/user" text="Нэвтрэх" OpenSide={OpenSide} />
+        <Menu
+          Zurag={register}
+          Link="/register"
+          text="Бүртгүүлэх"
+          OpenSide={OpenSide}
+        />
       </ul>
     </div>
   );

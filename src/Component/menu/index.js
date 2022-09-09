@@ -1,27 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import one from "../../assets/img/1.png";
-import two from "../../assets/img/2.png";
-import three from "../../assets/img/3.png";
-import four from "../../assets/img/4.png";
-import five from "../../assets/img/5.png";
-import sex from "../../assets/img/6.png";
 
 const menu = (props) => {
   return (
-    <Link to={props.path}>
-      <img
-        className={`h-20 w-20 ${!props.OpenSide && " h-7 w-9"}`}
-        src={props.zurag}
-        alt=""
-      />
-      <span
-        className={`${!props.OpenSide && "hidden"} origin-left duration-200`}
-      >
-        {props.text}
-      </span>
+    <li className=" cursor-pointer hover:bg-light-white rounded-md p-2">
+      <Link to={props.Link} className=" flex flex-row">
+        <img
+          className={` h-12 w-14 ${
+            !props.OpenSide && " h-5 w-7"
+          } mt-1 rounded-full`}
+          src={props.Zurag}
+          alt=""
+        />
+        <span
+          className={`${
+            !props.OpenSide && "hidden"
+          } origin-left duration-200 text-xl text-white ml-5 self-center`}
+        >
+          {props.text}
+        </span>
 
-      {/* <Link>
+        {/* <Link>
         <Link to={"/register"}>
           <img
             className={`h-20 w-20 ${!OpenSide && " h-7 w-9"}`}
@@ -33,7 +32,8 @@ const menu = (props) => {
           </span>
         </Link>
       </Link> */}
-    </Link>
+      </Link>
+    </li>
   );
 };
 
